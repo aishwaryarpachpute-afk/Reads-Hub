@@ -399,7 +399,7 @@
                     <input id="cardCvv" type="text" maxlength="4" placeholder="123" />
                   </div>
                   <div style="width:140px">
-                    <label>Amount (USD)</label>
+                    <label>Amount (INR)</label>
                     <input id="cardAmt" type="number" step="0.01" value="9.99" />
                   </div>
                 </div>
@@ -420,13 +420,13 @@
               </div>
               <div style="display:flex; justify-content:space-between; margin-top:6px">
                 <div class="muted">Price</div>
-                <div id="summaryPrice">$0.00</div>
+                <div id="summaryPrice">₹0.00</div>
               </div>
 
               <hr style="margin:12px 0; border:none; border-top:1px solid rgba(255,255,255,0.02)" />
               <div style="display:flex; justify-content:space-between; font-weight:700">
                 <div>Total</div>
-                <div id="summaryTotal">$0.00</div>
+                <div id="summaryTotal">₹0.00</div>
               </div>
             </aside>
           </div>
@@ -661,7 +661,8 @@
       const txt = `${book.title}\nBy ${book.author}\nCategory: ${book.category}\nPrice: ₹${book.price.toFixed(2)}\n\nClick OK to go to payment.`;
       if(confirm(txt)){
         state.cartItem = book;
-        $mm('#paymentItem').value = `${book.title} — ₹${book.price.toFixed(2)}`;
+        // Corrected the typo from $mm to $
+        $('#paymentItem').value = `${book.title} — ₹${book.price.toFixed(2)}`;
         $('#cardAmt').value = book.price.toFixed(2);
         updateSummary();
         showPage('payment');
@@ -838,8 +839,8 @@
         $('#cardAmt').value = item.price.toFixed(2);
       } else {
         $('#summaryItem').textContent = '—';
-        $('#summaryPrice').textContent = `$0.00`;
-        $('#summaryTotal').textContent = `$0.00`;
+        $('#summaryPrice').textContent = `₹0.00`;
+        $('#summaryTotal').textContent = `₹0.00`;
       }
     }
 
